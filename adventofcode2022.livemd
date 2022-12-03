@@ -1,7 +1,31 @@
 # Advent of Code 2022
 
-## Section
+## Day 1 - Elf with the most calories
 
 ```elixir
-IO.puts("Hello World")
+defmodule DayOne do
+  def read_lines(file) do
+    file
+    |> File.read!()
+    |> String.split("\n")
+  end
+
+  def chunk_by_empty_line(lines) do
+    lines
+    |> Enum.chunk_by(fn x -> x == "" end)
+    |> Enum.reject(fn x -> x == [""] end)
+  end
+
+  def strings_to_nums(list_of_strs) do
+    list_of_strs
+    |> Enum.map(fn s -> String.to_integer(s) end)
+  end
+end
+
+"#{__DIR__}/input.txt"
+|> DayOne.read_lines()
+|> DayOne.chunk_by_empty_line()
+|> Enum.map(fn l -> DayOne.strings_to_nums(l) end)
+|> Enum.map(fn l -> Enum.sum(l) end)
+|> Enum.max()
 ```
