@@ -29,3 +29,17 @@ end
 |> Enum.map(fn l -> Enum.sum(l) end)
 |> Enum.max()
 ```
+
+Day 2
+
+```elixir
+"#{__DIR__}/input.txt"
+|> DayOne.read_lines()
+|> DayOne.chunk_by_empty_line()
+|> Enum.map(fn l -> DayOne.strings_to_nums(l) end)
+|> Enum.map(fn l -> Enum.sum(l) end)
+|> Enum.sort()
+|> Enum.reverse()
+|> Enum.take(3)
+|> Enum.sum()
+```
